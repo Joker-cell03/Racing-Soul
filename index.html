@@ -957,6 +957,15 @@ html{-webkit-text-size-adjust:100%;scroll-padding-top:80px;}
   .gallery-cat{top:12px;left:12px;font-size:0.7rem;padding:5px 10px;}
   .slider-dots{display:flex;}
 }
+
+/* ── Lightbox photo ── */
+.gallery-item[data-full]{cursor:zoom-in;}
+.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.93);display:flex;align-items:center;justify-content:center;padding:56px 20px 24px;cursor:zoom-out;}
+.lightbox[hidden]{display:none;}
+.lightbox img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:6px;box-shadow:0 10px 50px rgba(0,0,0,0.6);cursor:default;}
+.lightbox-close{position:absolute;top:max(12px,env(safe-area-inset-top));right:16px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(20,20,20,0.9);color:var(--white);font-size:1.7rem;line-height:1;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s;}
+.lightbox-close:hover,.lightbox-close:focus-visible{border-color:var(--orange);color:var(--orange);}
+body.lightbox-open{overflow:hidden;}
 </style>
 </head>
 <body>
@@ -1158,7 +1167,7 @@ html{-webkit-text-size-adjust:100%;scroll-padding-top:80px;}
     </div>
 
     <div class="gallery-grid reveal" id="gallery-grid">
-      <div class="gallery-item" data-cat="moto"><span class="gallery-cat">Moto</span><img src="galerie-rose.webp" width="1000" height="750" loading="lazy" decoding="async" alt="Casque moto noir personnalisé : arbre rouge peint à la main, initiale A argentée et rose séchée"></div>
+      <div class="gallery-item" data-cat="moto" data-full="galerie-rose-full.webp" role="button" tabindex="0" aria-label="Agrandir la photo"><span class="gallery-cat">Moto</span><img src="galerie-rose.webp" width="1000" height="750" loading="lazy" decoding="async" alt="Casque moto noir personnalisé : arbre rouge peint à la main, initiale A argentée et rose séchée"></div>
       <div class="gallery-item" data-cat="soon"><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photos à venir</span></div></div>
     </div>
   </div>
@@ -1255,6 +1264,10 @@ html{-webkit-text-size-adjust:100%;scroll-padding-top:80px;}
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo en grand" hidden>
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Fermer la photo">&times;</button>
+  <img id="lightbox-img" alt="">
+</div>
 <script>
 const finishData = {
   chrome:  { name:'Chrome', desc:'Effet miroir intense, rendu métallique haute brillance. Idéal pour un look futuriste et agressif sur piste.' },
@@ -1478,6 +1491,41 @@ filterBtns.forEach(btn => {
   setupSlider(document.querySelector('.services-grid'));
   setupSlider(document.querySelector('.finishes-grid'));
   setupSlider(document.getElementById('gallery-grid'));
+})();
+
+/* ---------- Lightbox : photo entière au clic ---------- */
+(function(){
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbClose = document.getElementById('lightbox-close');
+  let opener = null;
+
+  function openLB(item){
+    const thumb = item.querySelector('img');
+    opener = item;
+    lbImg.src = item.dataset.full;
+    lbImg.alt = thumb ? thumb.alt : '';
+    lb.hidden = false;
+    document.body.classList.add('lightbox-open');
+    lbClose.focus();
+  }
+  function closeLB(){
+    if(lb.hidden) return;
+    lb.hidden = true;
+    lbImg.removeAttribute('src');
+    document.body.classList.remove('lightbox-open');
+    if(opener){ opener.focus(); opener = null; }
+  }
+
+  document.querySelectorAll('.gallery-item[data-full]').forEach(item => {
+    item.addEventListener('click', () => openLB(item));
+    item.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLB(item); }
+    });
+  });
+  lbClose.addEventListener('click', closeLB);
+  lb.addEventListener('click', e => { if(e.target !== lbImg) closeLB(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLB(); });
 })();
 </script>
 
