@@ -436,9 +436,7 @@ nav.main-nav a:hover::after{width:100%;}
 .swatch.flame{background:linear-gradient(160deg,#0a0a0a 20%, #FF6A00 55%, #FFD27A 85%);}
 .swatch.duotone{background:linear-gradient(115deg,#0a0a0a 50%, #FF6A00 50%);}
 .swatch.holo{background:linear-gradient(120deg,#FF6A00,#8A2BE2,#00C2FF,#FF6A00);background-size:300% 300%;animation:holo 6s ease infinite;}
-.swatch.carbon{background:
-  repeating-linear-gradient(45deg, #1a1a1a 0 6px, #101010 6px 12px),
-  repeating-linear-gradient(-45deg, rgba(255,106,0,0.06) 0 6px, transparent 6px 12px);}
+.swatch.solid{background:#A3162F;}
 .swatch.stripes{background:repeating-linear-gradient(115deg,#0a0a0a 0 30px, #FF6A00 30px 40px, #0a0a0a 40px 70px, #F3F2EF 70px 76px);}
 /* ── Helmet Preview ── */
 .finish-card{cursor:pointer;}
@@ -501,7 +499,7 @@ nav.main-nav a:hover::after{width:100%;}
 .helmet-overlay[data-finish="flame"]{background:linear-gradient(160deg,#2a1200 8%,#FF6A00 55%,#FFD27A 92%);}
 .helmet-overlay[data-finish="duotone"]{background:linear-gradient(115deg,#1a1a1a 50%,#FF6A00 50%);}
 .helmet-overlay[data-finish="holo"]{background:linear-gradient(120deg,#FF6A00,#8A2BE2,#00C2FF,#FF6A00);background-size:300% 300%;animation:holo 6s ease infinite;}
-.helmet-overlay[data-finish="carbon"]{background:repeating-linear-gradient(45deg,#2a2a2a 0 6px,#161616 6px 12px),repeating-linear-gradient(-45deg,rgba(255,106,0,0.12) 0 6px,transparent 6px 12px);}
+.helmet-overlay[data-finish="solid"]{background:#A3162F;}
 .helmet-overlay[data-finish="stripes"]{background:repeating-linear-gradient(115deg,#1a1a1a 0 30px,#FF6A00 30px 40px,#1a1a1a 40px 70px,#F3F2EF 70px 76px);}
 
 /* ---------- Motif personnalisé (import d'image) ---------- */
@@ -1102,7 +1100,7 @@ html{-webkit-text-size-adjust:100%;scroll-padding-top:80px;}
       <div class="finish-card" data-finish="flame" role="button" tabindex="0"><div class="swatch flame"></div><div class="tag">Flammes</div></div>
       <div class="finish-card" data-finish="duotone" role="button" tabindex="0"><div class="swatch duotone"></div><div class="tag">Bi-ton mat</div></div>
       <div class="finish-card" data-finish="holo" role="button" tabindex="0"><div class="swatch holo"></div><div class="tag">Holographique</div></div>
-      <div class="finish-card" data-finish="carbon" role="button" tabindex="0"><div class="swatch carbon"></div><div class="tag">Carbone</div></div>
+      <div class="finish-card" data-finish="solid" role="button" tabindex="0"><div class="swatch solid"></div><div class="tag">Rouge grenat</div></div>
       <div class="finish-card" data-finish="stripes" role="button" tabindex="0"><div class="swatch stripes"></div><div class="tag">Racing stripes</div></div>
     </div>
 
@@ -1154,18 +1152,18 @@ html{-webkit-text-size-adjust:100%;scroll-padding-top:80px;}
 
     <div class="filter-bar reveal">
       <button class="filter-btn active" data-filter="all">Tout</button>
-      <button class="filter-btn" data-filter="karting">Karting</button>
       <button class="filter-btn" data-filter="moto">Moto</button>
       <button class="filter-btn" data-filter="jet">Jet</button>
+      <button class="filter-btn" data-filter="karting">Karting</button>
     </div>
 
     <div class="gallery-grid reveal" id="gallery-grid">
+      <div class="gallery-item" data-cat="moto"><span class="gallery-cat">Moto</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
+      <div class="gallery-item" data-cat="jet"><span class="gallery-cat">Jet</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
       <div class="gallery-item" data-cat="karting"><span class="gallery-cat">Karting</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
       <div class="gallery-item" data-cat="moto"><span class="gallery-cat">Moto</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
       <div class="gallery-item" data-cat="jet"><span class="gallery-cat">Jet</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
-      <div class="gallery-item" data-cat="moto"><span class="gallery-cat">Moto</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
       <div class="gallery-item" data-cat="karting"><span class="gallery-cat">Karting</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
-      <div class="gallery-item" data-cat="jet"><span class="gallery-cat">Jet</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
     </div>
   </div>
 </section>
@@ -1265,7 +1263,7 @@ const finishData = {
   flame:   { name:'Flammes', desc:'Dégradé feu orange brûlant du sombre vers le lumineux. Énergie pure, chaleur et puissance en mouvement.' },
   duotone: { name:'Bi-ton mat', desc:'Contraste radical noir/orange mat. Un design épuré, géométrique, qui impose sa présence sans compromis.' },
   holo:    { name:'Holographique', desc:"Caméléon irisé : le casque change de couleur selon l'angle de lumière. Un effet unique, jamais discret." },
-  carbon:  { name:'Carbone', desc:"Texture carbone tissée, mate et sophistiquée. L'esthétique de la performance, directement venue du motorsport." },
+  solid:   { name:'Rouge grenat', desc:"Un rouge profond, entre bordeaux et cramoisi. Une teinte unie, élégante et plus rare que le rouge classique." },
   stripes: { name:'Racing Stripes', desc:'Rayures dynamiques orange, blanc et noir inclinées à pleine vitesse. Le classique du sport auto réinventé.' }
 };
 
