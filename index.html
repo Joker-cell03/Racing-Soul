@@ -1158,12 +1158,8 @@ html{-webkit-text-size-adjust:100%;scroll-padding-top:80px;}
     </div>
 
     <div class="gallery-grid reveal" id="gallery-grid">
-      <div class="gallery-item" data-cat="moto"><span class="gallery-cat">Moto</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
-      <div class="gallery-item" data-cat="jet"><span class="gallery-cat">Jet</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
-      <div class="gallery-item" data-cat="karting"><span class="gallery-cat">Karting</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
-      <div class="gallery-item" data-cat="moto"><span class="gallery-cat">Moto</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
-      <div class="gallery-item" data-cat="jet"><span class="gallery-cat">Jet</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
-      <div class="gallery-item" data-cat="karting"><span class="gallery-cat">Karting</span><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photo à venir</span></div></div>
+      <div class="gallery-item" data-cat="moto"><span class="gallery-cat">Moto</span><img src="galerie-rose.webp" width="1000" height="750" loading="lazy" decoding="async" alt="Casque moto noir personnalisé : arbre rouge peint à la main, initiale A argentée et rose séchée"></div>
+      <div class="gallery-item" data-cat="soon"><div class="gallery-placeholder"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg><span>Photos à venir</span></div></div>
     </div>
   </div>
 </section>
@@ -1411,7 +1407,7 @@ filterBtns.forEach(btn => {
     btn.classList.add('active');
     const filter = btn.dataset.filter;
     galleryItems.forEach(item => {
-      item.classList.toggle('hidden', !(filter === 'all' || item.dataset.cat === filter));
+      item.classList.toggle('hidden', !(filter === 'all' || item.dataset.cat === filter || item.dataset.cat === 'soon'));
     });
     const gg = document.getElementById('gallery-grid');
     gg.scrollLeft = 0;
